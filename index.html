@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtueel lab</title>
+    <link rel="stylesheet" href="pannellum/pannellum.css"/>
+    <script type="text/javascript" src="pannellum/pannellum.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #panorama {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="panorama"></div>
+    <script type="module">
+      // Import and initialize pannellum viewer.
+      import pannellumViewer from './pannellumViewer.js';
+      pannellum.viewer('panorama', pannellumViewer);
+    </script>
+</body>
+</html>
