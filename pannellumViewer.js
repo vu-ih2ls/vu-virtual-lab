@@ -6,19 +6,21 @@ const folder = settings.folder;
 const pannellumViewer = {
   "default": {
     // Set default first scene.
-    "firstScene": "lab1",
-      "sceneFadeDuration": 1000,
-      "fallback": "fallback.html"
+    "firstScene": "example",
+    // Set a fallback url for when pannellum/WebGL renderer is not supported.
+    "fallback": "fallback.html",
+    // Set the basepath to the folder from settings.js.
+    "basePath": folder + "/",
+    // Additional settings, see https://pannellum.org/documentation/reference/.
+    "sceneFadeDuration": 1000,
+    "compass": false
   },
   "scenes": {
     // First scene: lab 1
-    "lab1": {
+    "example": {
       "type": "equirectangular",
-        /*
-         * Change the panorama value to the file of the equirectangular image.
-         */
-        "panorama": folder+"/lab.jpg",
-        "autoLoad": true,
+        // File name of equirectangular image.
+        "panorama": "example.webp",
         /*
          * Uncomment the next line to print the coordinates of mouse clicks
          * to the browser's developer console, which makes it much easier
@@ -26,40 +28,20 @@ const pannellumViewer = {
          * finished, though.
          */
         // "hotSpotDebug": true,
-
         "hotSpots": [
         {
-          "pitch": -6.5,
-          "yaw": -50,
           "type": "info",
+          // Use the hotSpotDebug (see above) to find right pitch and yaw.
+          "pitch": -20,
+          "yaw": 5,
+          // Text shown on hover.
           "text": "Instrument 1",
-          "URL": baseUrl+"/pages/hplc"
-        },
-        {
-          "pitch": -5,
-          "yaw": 160,
-          "type": "scene",
-          "text": "Naar buiten",
-          "sceneId": "lab2"
+          // Link to canvas page or url with more information.
+          "URL": baseUrl + "/pages/instrument"
         },
       ]
     },
-    // Second scene: lab 2
-    "lab2": {
-      "type": "equirectangular",
-        "panorama": folder+"/lab.jpg",
-        "autoLoad": true,
-        // "hotSpotDebug": true,
-        "hotSpots": [
-        {
-          "pitch": -1.5,
-          "yaw": 60,
-          "type": "scene",
-          "text": "Naar het lab",
-          "sceneId": "lab1"
-        },
-      ]
-    },
+    // Add more scenes here
   }
 }
 
