@@ -14,14 +14,52 @@
         #panorama {
             height: 100%;
         }
+        /* Warning for small screens */
+        .overlay {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+        .overlay > :is(h2, p, button) {
+            padding: 10px;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <div id="popup" class="hidden overlay">
+        <h2>Let op:</h2>
+        <p>Voor de beste ervaring wordt een groter scherm aanbevolen.</p>
+        <button onclick="popup()">Toch doorgaan</button>
+    </div>
     <div id="panorama"></div>
     <script type="module">
-      // Import and initialize pannellum viewer.
       import pannellumViewer from './pannellumViewer.js';
+      import settings from './settings.js';
+
+      // Initialize pannellum viewer.
       pannellum.viewer('panorama', pannellumViewer);
+
+      // Warning for small screens.
+      if (settings.smallScreenWarning) {
+        let windowSize = window.innerWidth;
+        window.addEventListener('load', (event) => {
+          if (windowSize <= 800) {popup()}
+        });
+      }
+    </script>
+    <script>
+      // Popup function for small screen warning.
+      function popup() {
+        document.getElementById('popup').classList.toggle('hidden');
+        document.getElementById('panorama').classList.toggle('hidden');
+      }
     </script>
 </body>
 </html>
