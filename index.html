@@ -49,7 +49,7 @@
       // Warning for small screens.
       if (settings.smallScreenWarning) {
         let windowSize = window.innerWidth;
-        window.addEventListener('load', (event) => {
+        window.addEventListener('load', () => {
           if (windowSize <= 800) {popup()}
         });
       }
