@@ -16,7 +16,7 @@ The resulting image is likely large (~30-40 MB), so compression is necessary to 
 For removing the tripod, two approaches are possible: adding a logo over the tripod (using the app provided with the 360 camera) or editing it using an image editing program that is able to edit equirectangular images (for example in Affinity Photo using live projection).
 
 ## Virtual lab setup
-To create a virtual lab environment, first create a new repository using this template. To get started, first look at `settings.js`, which contains the following variables:
+To create a virtual lab environment, first create a new repository using this template (click the 'Use this template' button, then 'Create a new repository'). To get started, first look at `settings.js`, which contains the following variables:
 - `baseUrl` (string): the url of the canvas page in the format `https://canvas.<UNIVERSITY>.nl/<COURSE_CODE>/`, where `<UNIVERSITY>` and `<COURSE_CODE>` should be edited, for example `https://canvas.vu.nl/courses/12345/`
 - `folder` (string): the name of the folder containing the images, the default is `img`
 - `smallScreenWarning` (boolean): there is an option to show a warning for screens smaller than 800 pixels, the warning is not permanent and can be clicked away, if you do not want this behavior, set it to `false`, the default is `true`
@@ -26,11 +26,14 @@ The second step is to upload your images into the `img` folder (or any other fol
 - `index.html`: By default, the virtual lab environment consists of one single page that shows the pannellum viewer in fullscreen, as this works best when embedding the website in canvas or any other site. To change anything on this default page, edit `index.html`.
 - `fallback.html`: Shown when the browser does not support WebGL and/or Pannellum. An option could be to show some static images of the lab, as those will always load.
 - `favicon.ico`: The icon that will be shown in the browser tab, the default is the iH2LS logo. The icon can be removed for no icon or replaced by generating an icon using image editing software or an online tool (https://realfavicongenerator.net for example).
-- `pannellum` (folder): In this folder, the Pannellum library is stored, dowloaded from https://pannellum.org/download/. This is used instead of the CDN Pannellum provides for reliability. If necessary, the CDN can also be used instead of the folder.
+- `pannellum` (folder): In this folder, the Pannellum library is stored, dowloaded from https://pannellum.org/download/. If necessary, the Pannellum CDN can be used instead of the folder.
+- `README.md`: This explanatory file, delete after copying this template.
 
 ## Useful links
-- The Pannellum examples (https://pannellum.org/documentation/examples/simple-example/)
+- [Adding a logo on top of the tripod using the insta360 app](https://www.insta360.com/support/supportcourse?post_id=9341)
+- [Editing an equirectangular image in Affinity photo](https://affinity.help/photo/en-US.lproj/index.html?page=pages/LiveProjection/equirectangular.html&title=Equirectangular%20projection)
+- [The Pannellum examples](https://pannellum.org/documentation/examples/simple-example/)
   - [Adding hotspots](https://pannellum.org/documentation/examples/hot-spots/)
   - [Setting up a tour](https://pannellum.org/documentation/examples/tour/)
   - [Setting the initial view](https://pannellum.org/documentation/examples/initial-view/)
-- All Pannellum JSON configuration options (https://pannellum.org/documentation/reference/#json-configuration-file-options)
+- [All Pannellum JSON configuration options](https://pannellum.org/documentation/reference/#json-configuration-file-options)
