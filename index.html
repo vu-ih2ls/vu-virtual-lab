@@ -10,55 +10,68 @@
         html, body {
             height: 100%;
             margin: 0;
+            font-family: sans-serif;
         }
         #panorama {
             height: 100%;
         }
-        /* Warning for small screens */
-        .overlay {
+        /* Simple modal, based on https://www.w3schools.com/howto/howto_css_modals.asp */
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            padding-top: 5vh;
+            inset: 0;
+            width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            flex-direction: column;
-            font-family: sans-serif;
+            background-color: rgba(255, 255, 255, 0.5);
         }
-        .overlay > :is(h2, p, button) {
-            padding: 10px;
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 1em;
+            width: 75%;
+            border-radius: 1em;
         }
-        .hidden {
-            display: none;
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div id="popup" class="hidden overlay">
-        <h2>Let op:</h2>
-        <p>Voor de beste ervaring wordt een groter scherm aanbevolen.</p>
-        <button onclick="popup()">Toch doorgaan</button>
-    </div>
     <div id="panorama"></div>
+    <template id="modal">
+         <div class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="return this.parentNode.parentNode.remove();">&times;</span>
+            </div>
+         </div>
+    </template>
     <script type="module">
       import pannellumViewer from './pannellumViewer.js';
       import settings from './settings.js';
+      import {smallScreenModal} from './modal.js';
 
       // Initialize pannellum viewer.
       pannellum.viewer('panorama', pannellumViewer);
 
-      // Warning for small screens.
+      // Show warning for small screens (messages below can be changed).
       if (settings.smallScreenWarning) {
         let windowSize = window.innerWidth;
         window.addEventListener('load', () => {
-          if (windowSize <= 800) {popup()}
+          if (windowSize <= 800) {smallScreenModal(
+            'Voor de beste ervaring wordt een groter scherm aanbevolen.', 'Toch doorgaan'
+          )}
         });
-      }
-    </script>
-    <script>
-      // Popup function for small screen warning.
-      function popup() {
-        document.getElementById('popup').classList.toggle('hidden');
-        document.getElementById('panorama').classList.toggle('hidden');
       }
     </script>
 </body>

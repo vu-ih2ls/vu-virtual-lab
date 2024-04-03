@@ -1,5 +1,6 @@
 // Import settings from settings file.
 import settings from './settings.js';
+import {showModal} from './modal.js';
 const baseUrl = settings.baseUrl;
 const folder = settings.folder;
 
@@ -37,7 +38,14 @@ const pannellumViewer = {
           // Text shown on hover.
           "text": "Instrument 1",
           // Link to canvas page or url with more information.
-          "URL": baseUrl + "/pages/instrument"
+          // "URL": baseUrl + "/pages/instrument",
+
+          // OR: Use custom popup function to show popup.
+          "clickHandlerFunc": showModal,
+          // With arguments: array of html element name (in this case <p>) and the value (text or a url).
+          "clickHandlerArgs": ["p", "This is a test!"],
+          // OR:
+          // "clickHandlerArgs": ["iframe", "https://www.youtube.com/embed/gw4A4CgwtyE?si=WmNxFpOCBCLPGQrn"],
         },
       ]
     },

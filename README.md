@@ -25,9 +25,13 @@ The second step is to upload your images into the `img` folder (or any other fol
 - `pannellumViewer.js`: Here you can change all the settings related to Pannellum, the virtual tour, locations of markers and more. For an extensive explanation, see https://pannellum.org/documentation/overview/. Also look at the useful links below.
 - `index.html`: By default, the virtual lab environment consists of one single page that shows the pannellum viewer in fullscreen, as this works best when embedding the website in canvas or any other site. To change anything on this default page, edit `index.html`.
 - `fallback.html`: Shown when the browser does not support WebGL and/or Pannellum. An option could be to show some static images of the lab, as those will always load.
+- `modal.js`: Configuration of the modal popups that are shown when clicking on an information hotspot. By default, text `<p>`, embeds `<iframe>` and images `<img>` are supported. Can be edited to allow for more modal types or combinations of the modal types.
 - `favicon.ico`: The icon that will be shown in the browser tab, the default is the iH2LS logo. The icon can be removed for no icon or replaced by generating an icon using image editing software or an online tool (https://realfavicongenerator.net for example).
 - `pannellum` (folder): In this folder, the Pannellum library is stored, dowloaded from https://pannellum.org/download/. If necessary, the Pannellum CDN can be used instead of the folder.
 - `README.md`: This explanatory file, delete after copying this template.
+
+## Pannellum hotspots
+The Pannellum hotspots can be added according to the Pannellum documentation for the navigational hotspots and the information hotspots that open a link. For showing a popup when clicking on an information hotspot, the `clickHandlerFunc` and `clickHandlerArgs` attributes can be used together with the `modal.js` file. As shown in the example in `pannellumViewer.js`, `clickHandlerFunc` should be set to `showModal`. `clickHandlerArgs` should be an array containing the type of modal (`p`,`iframe`,`img`) and the value (either a string of text for `p`, or a path/url for `iframe` and `img`).
 
 ## Useful links
 - [Adding a logo on top of the tripod using the insta360 app](https://www.insta360.com/support/supportcourse?post_id=9341)
